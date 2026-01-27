@@ -5,6 +5,7 @@ Aplikasi web untuk mengelola pengaduan dan aspirasi terkait sarana dan prasarana
 ## 🚀 Fitur Utama
 
 ### Untuk Admin
+
 - ✅ Melihat semua aspirasi (list keseluruhan)
 - ✅ Filter aspirasi (per tanggal, per bulan, per siswa, per kategori)
 - ✅ Melihat dan mengubah status penyelesaian
@@ -14,6 +15,7 @@ Aplikasi web untuk mengelola pengaduan dan aspirasi terkait sarana dan prasarana
 - ✅ Dashboard dengan statistik
 
 ### Untuk Siswa
+
 - ✅ Membuat aspirasi/pengaduan baru
 - ✅ Melihat status penyelesaian aspirasi sendiri
 - ✅ Melihat umpan balik dari admin
@@ -31,7 +33,7 @@ Aplikasi web untuk mengelola pengaduan dan aspirasi terkait sarana dan prasarana
 
 ## 📋 Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - MySQL 8.0+
 - npm atau yarn
 
@@ -65,13 +67,14 @@ Atau import manual menggunakan MySQL Workbench atau phpMyAdmin.
 Buat file `hash-password.js`:
 
 ```javascript
-const bcrypt = require('bcryptjs');
-const password = 'password123';
+const bcrypt = require("bcryptjs");
+const password = "password123";
 const hash = bcrypt.hashSync(password, 10);
 console.log(hash);
 ```
 
 Jalankan:
+
 ```bash
 node hash-password.js
 ```
@@ -86,18 +89,20 @@ Buat file `.env.local`:
 # Database
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=your_mysql_password
+DB_PASSWORD=
 DB_NAME=pengaduan_sekolah
 
 # NextAuth
 NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=generate-using-openssl-rand-base64-32
+# NEXTAUTH_SECRET=XJ26DxwqIqYc/L9dyoTgyLxzeS7u1C7aBLodHFynSwY=
+NEXTAUTH_SECRET=Xiougasd213opijnasd9IOHu3123asds
 
 # Upload
 UPLOAD_DIR=./public/uploads
 ```
 
 Generate NEXTAUTH_SECRET:
+
 ```bash
 openssl rand -base64 32
 ```
@@ -118,10 +123,12 @@ Buka browser: `http://localhost:3000`
 ## 👥 Login Credentials
 
 ### Admin
+
 - Username: `admin`
 - Password: `password123`
 
 ### Siswa
+
 - Username: `siswa1`
 - Password: `password123`
 
@@ -157,6 +164,7 @@ src/
 ## 🔐 Role-Based Access Control
 
 ### Admin dapat:
+
 - Melihat semua aspirasi
 - Mengubah status aspirasi
 - Memberikan umpan balik
@@ -164,6 +172,7 @@ src/
 - Filter berdasarkan siswa
 
 ### Siswa dapat:
+
 - Membuat aspirasi baru
 - Melihat aspirasi sendiri
 - Melihat umpan balik
@@ -173,18 +182,23 @@ src/
 ## 📊 Database Schema
 
 ### Tabel Users
+
 - id, username, password, nama_lengkap, role, kelas, email
 
 ### Tabel Kategori
+
 - id, nama_kategori, deskripsi
 
 ### Tabel Aspirasi
+
 - id, user_id, kategori_id, judul, deskripsi, lokasi, tingkat_urgensi, status, tanggal_pengaduan
 
 ### Tabel Umpan Balik
+
 - id, aspirasi_id, admin_id, pesan, tindakan, estimasi_selesai
 
 ### Tabel Progres Perbaikan
+
 - id, aspirasi_id, persentase, keterangan, foto_progres
 
 ## 🎨 Fitur UI/UX
@@ -200,34 +214,41 @@ src/
 ## 🔄 API Endpoints
 
 ### Aspirasi
+
 - `GET /api/aspirasi` - List aspirasi dengan filter
 - `POST /api/aspirasi` - Buat aspirasi baru
 - `PUT /api/aspirasi` - Update status
 - `GET /api/aspirasi/[id]` - Detail aspirasi
 
 ### Umpan Balik
+
 - `GET /api/umpan-balik?aspirasi_id=[id]` - List umpan balik
 - `POST /api/umpan-balik` - Tambah umpan balik
 
 ### Progres
+
 - `GET /api/progres?aspirasi_id=[id]` - List progres
 - `POST /api/progres` - Tambah progres
 
 ### Kategori
+
 - `GET /api/kategori` - List kategori
 
 ## 🐛 Troubleshooting
 
 ### Error: "Cannot connect to database"
+
 - Pastikan MySQL sudah running
 - Cek credentials di `.env.local`
 - Cek firewall settings
 
 ### Error: "NextAuth not configured"
+
 - Pastikan NEXTAUTH_SECRET sudah di-set
 - Generate ulang dengan `openssl rand -base64 32`
 
 ### Error: "Unauthorized"
+
 - Clear browser cookies
 - Logout dan login kembali
 - Cek session di browser DevTools
@@ -235,6 +256,7 @@ src/
 ## 📝 Pengembangan Lebih Lanjut
 
 ### Fitur yang bisa ditambahkan:
+
 1. Upload foto bukti pengaduan
 2. Notifikasi real-time (WebSocket/Pusher)
 3. Export laporan ke PDF/Excel
@@ -245,6 +267,7 @@ src/
 8. Dark mode
 
 ### Security Enhancements:
+
 1. Rate limiting
 2. CSRF protection
 3. Input sanitization
