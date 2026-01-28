@@ -37,32 +37,7 @@ Aplikasi web untuk mengelola pengaduan dan aspirasi terkait sarana dan prasarana
 - MySQL 8.0+
 - npm atau yarn
 
-## 🔧 Instalasi
-
-### 1. Clone & Install Dependencies
-
-```bash
-# Clone repository
-git clone <repository-url>
-cd pengaduan-sekolah
-
-# Install dependencies
-npm install
-```
-
-### 2. Setup Database
-
-```bash
-# Login ke MySQL
-mysql -u root -p
-
-# Jalankan script database
-source db_schema.sql
-```
-
-Atau import manual menggunakan MySQL Workbench atau phpMyAdmin.
-
-### 3. Generate Password Hash
+### Generate Password Hash
 
 Buat file `hash-password.js`:
 
